@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · Arsip Tugas</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./"><i aria-hidden="true"></i>ARSIP/TUGAS</a>
+    <button id="logout" class="admin-link" hidden>Keluar</button>
+  </header>
+
+  <main class="narrow">
+    <section id="loginView" hidden>
+      <h1 class="h-md">Masuk admin</h1>
+      <form id="loginForm" class="form">
+        <label>Email<input name="email" type="email" required autocomplete="username"></label>
+        <label>Kata sandi<input name="password" type="password" required autocomplete="current-password"></label>
+        <button class="btn primary" type="submit">Masuk</button>
+        <p class="msg" id="loginMsg" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="adminView" hidden>
+      <h1 class="h-md" id="formTitle">Tambah tugas</h1>
+      <form id="taskForm" class="form">
+        <input type="hidden" name="id">
+        <label>Judul<input name="title" required maxlength="160"></label>
+        <label>Deskripsi<textarea name="description" rows="3"></textarea></label>
+        <div class="row">
+          <label>Kategori<input name="category" list="cats" value="Umum" required></label>
+          <datalist id="cats"></datalist>
+          <label>Tanggal<input name="task_date" type="date" required></label>
+        </div>
+        <label>File atau foto<input name="files" type="file" multiple></label>
+        <div class="row">
+          <button class="btn primary" type="submit" id="saveBtn">Simpan</button>
+          <button class="btn" type="button" id="cancelEdit" hidden>Batal edit</button>
+        </div>
+        <p class="msg" id="formMsg" role="status"></p>
+      </form>
+
+      <h2 class="h-md">Tugas tersimpan</h2>
+      <ul id="adminList" class="admin-list"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
